@@ -1,9 +1,16 @@
 package Day06;
+import java.util.HashSet;
 import java.util.Scanner;
 
 class Solution{
     public static boolean happyNum(int num){
+        HashSet<Integer> seen = new HashSet<>();
         while(num !=1){
+            if(seen.contains(num)){
+                return false;
+            }else{
+                seen.add(num);
+            };
             int sum =0;
             while(num > 0){
                 int rem = num % 10;
