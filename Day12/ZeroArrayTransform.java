@@ -34,9 +34,7 @@ class Solution {
 }
 public class ZeroArrayTransform {
     public static void main(String[] args) {
-        
-    
-    Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         //1D array
         String str = sc.nextLine();
         String data[] = str.split(",");
