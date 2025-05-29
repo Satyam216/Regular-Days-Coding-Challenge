@@ -1,7 +1,5 @@
-package Day20;
+package Day20; //problem 2894
 import java.util.Scanner;
-
-import javax.swing.text.StyledEditorKit;
 
 class Solution {
     public int differenceOfSums(int n, int m) {
