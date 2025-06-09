@@ -45,7 +45,7 @@ public class FindClosestNode {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        // edge1 input
+        // edgees input
         String str = sc.nextLine();
         String data[] = str.split(" ");
         int edges[] = new int[data.length];

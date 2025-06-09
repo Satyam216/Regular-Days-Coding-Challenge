@@ -30,7 +30,7 @@ public class Candy {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        // edge1 input
+        // ratings input
         String str = sc.nextLine();
         String data[] = str.split(" ");
         int ratings[] = new int[data.length];
