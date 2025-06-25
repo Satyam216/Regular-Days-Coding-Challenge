@@ -1,5 +1,5 @@
-package Day29;
-
+package Day29;  //problem 1061
+ 
 import java.util.Scanner;
 
 class Solution {
