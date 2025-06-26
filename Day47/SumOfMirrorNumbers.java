@@ -1,30 +1,61 @@
-package Day47;
+package Day47; //problem 2081. Sum of k-Mirror Numbers
+import java.util.*;
 
-import java.util.Arrays;
-import java.util.Scanner;
+class Solution {
+    // Convert number to base-k string
+    private String toBaseK(long num, int k) {
+        StringBuilder sb = new StringBuilder();
+        while (num > 0) {
+            sb.append(num % k);
+            num /= k;
+        }
+        return sb.reverse().toString();
+    }
 
-class Solution{
-    public String[] sumOfNumbers(int n, int k){
-        String binaryArray[] = new String[30];
-        String ans[] = new String[n];
-        String binary = "";
-        for(int i=1; i<30; i++){
-            if(i>0){
-            binary = i%k + binary;
-            i = i/k;
-            }
-            binaryArray[i] = binary;
+    // Check if a string is a palindrome
+    private boolean isPalindrome(String s) {
+        int l = 0, r = s.length() - 1;
+        while (l < r) {
+            if (s.charAt(l++) != s.charAt(r--)) return false;
         }
-        for(int i=0; i<30; i++){
-            String reversed = new StringBuilder(binaryArray[i]).reverse().toString();
-            if(binaryArray[i] == reversed){
-                ans[i] = binaryArray[i];
-            }
+        return true;
+    }
+
+    // Generate palindromes in base-10
+    private List<Long> generateBase10Palindromes(int length) {
+        List<Long> palindromes = new ArrayList<>();
+        int half = (length + 1) / 2;
+        long start = (long) Math.pow(10, half - 1);
+        long end = (long) Math.pow(10, half);
+
+        for (long i = start; i < end; i++) {
+            String firstHalf = String.valueOf(i);
+            String secondHalf = new StringBuilder(firstHalf.substring(0, length % 2 == 0 ? firstHalf.length() : firstHalf.length() - 1)).reverse().toString();
+            palindromes.add(Long.parseLong(firstHalf + secondHalf));
         }
-        //for(int i=0; i<binaryArray)
-        return ans;
+        return palindromes;
+    }
+
+    public long kMirror(int k, int n) {
+        long sum = 0;
+        int count = 0;
+        int length = 1;
+
+        while (count < n) {
+            for (long num : generateBase10Palindromes(length)) {
+                if (isPalindrome(toBaseK(num, k))) {
+                    sum += num;
+                    count++;
+                    if (count == n) break;
+                }
+            }
+            length++;
+        }
+
+        return sum;
     }
 }
+
 
 public class SumOfMirrorNumbers {
     public static void main(String[] args) {
@@ -32,8 +63,8 @@ public class SumOfMirrorNumbers {
         int n = sc.nextInt();
         int k = sc.nextInt();
         Solution ob = new Solution();
-        String result[] = ob.sumOfNumbers(n, k);
-        System.out.println(Arrays.toString(result));
+        long result = ob.kMirror(n, k);
+        System.out.println(result);
         sc.close();
     }
     
