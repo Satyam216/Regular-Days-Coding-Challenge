@@ -9,7 +9,7 @@ class Solution{
         String ans[] = new String[n];
         String binary = "";
         for(int i=1; i<30; i++){
-            while(i>0){
+            if(i>0){
             binary = i%k + binary;
             i = i/k;
             }

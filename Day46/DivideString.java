@@ -1,4 +1,4 @@
-package Day46;
+package Day46; // problem 2138. Divide a String Into Groups of Size k
 import java.util.Arrays;
 import java.util.Scanner;
 
