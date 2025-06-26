@@ -1,4 +1,4 @@
-package Day40;
+package Day40;  //problem 2016. Maximum Difference Between Increasing Elements
 import java.util.Scanner;
 
 class Solution {
