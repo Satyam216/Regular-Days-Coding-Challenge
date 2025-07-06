@@ -6,7 +6,6 @@ import java.util.Scanner;
 class Solution {
     public int findLucky(int[] arr) {
         HashMap<Integer,Integer> freq = new HashMap<>();
-        int luckyNum = 0;
         int maxLucky = -1;
 
         for(int num : arr){
@@ -15,8 +14,7 @@ class Solution {
         
         for(int value : freq.keySet()){
             if(value == freq.get(value)){
-                luckyNum = value;
-                maxLucky = Math.max(luckyNum, maxLucky);
+                maxLucky = Math.max(value, maxLucky);
             }
         }
         return maxLucky;
