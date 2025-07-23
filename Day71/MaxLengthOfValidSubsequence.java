@@ -1,28 +1,35 @@
-package Day71;
+package Day71;  //leetcode 3201. Find the Maximum Length of Valid Subsequence I
 
-import java.util.Arrays;
 import java.util.Scanner;
 
-class Solution{
-    public int maximumLength(int nums[]){
-        int maxLength = 0;
-        int length = 0;
-        for(int i=0; i<nums.length;){
-            int end = Math.min(i+3,nums.length);
-            int subArray[] = Arrays.copyOfRange(nums,i,end);
-            length = subArray.length;
-            for(int j=0; j<length-1; j++){
-                int compareNum = (subArray[length-2] + subArray[length - 1])%2;
-                int sum = subArray[j]%2 + subArray[j+1];
-                if(sum == compareNum){
-                    maxLength = Math.max(length, maxLength);
-                }
+class Solution {
+    public int maximumLength(int[] nums) {
+        int countEven = 0;
+        int countOdd = 0;
+        int countAlternative = 1;
+
+        for(int i=0; i<nums.length; i++){
+            if(nums[i] % 2 == 0){
+                countEven++;
+            }else{
+                countOdd++;
             }
-            i = i+2;
         }
-    return maxLength;
+
+        int parity = nums[0] % 2;
+
+        for(int i=1; i<nums.length; i++){
+            int currentParity = nums[i] % 2;
+            if(currentParity != parity){
+                countAlternative++;
+                parity = currentParity;
+            }
+            
+        }
+        return Math.max(Math.max(countEven, countOdd), countAlternative);
     }
 }
+
 
 public class MaxLengthOfValidSubsequence {
     public static void main(String[] args) {
