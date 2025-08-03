@@ -1,4 +1,4 @@
-package Day81;
+package Day81;      //3480. Maximize Subarrays After Removing One Conflicting Pair
 import java.util.*;
 
 class Solution {
@@ -60,6 +60,5 @@ public class RemovingOneConflictingPair {
         long result = ob.maxSubarrays(n, edges);
         System.out.println(result);
         
-    }
-    
+    }   
 }
