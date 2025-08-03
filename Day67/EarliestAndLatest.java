@@ -77,5 +77,4 @@ public class EarliestAndLatest {
         System.out.println(result);
 
     }
-    
 }
